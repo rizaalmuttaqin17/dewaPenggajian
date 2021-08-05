@@ -26,7 +26,7 @@
                                 </thead>
                                 <?php
                                     $i = 1;
-                                    if($stmt = $db->query("SELECT * FROM gaji_bulamam JOIN users ON gaji_bulanan.id_user=users.id")){
+                                    if($stmt = $db->query("SELECT * FROM gaji_bulanan JOIN users ON gaji_bulanan.id_user=users.id")){
                                         while ($row = $stmt->fetch_assoc()) {
                                 echo "
                                 <tbody>

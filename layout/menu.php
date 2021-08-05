@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if ($current_page=="pengguna") {echo "active"; }?>" href="users.php">
+                <a class="nav-link <?php if ($current_page=="users") {echo "active"; }?>" href="users.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -112,7 +112,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="../views/gaji-bulanan.php">
+                <a class="nav-link <?php if ($current_page=="gaji-bulanan") {echo "active"; }?>" href="gaji-bulanan.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -133,11 +133,11 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Gaji Bulamam</span>
+                    <span class="nav-link-text ms-1">Gaji Bulanan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="pages/tables.html">
+                <a class="nav-link <?php if ($current_page=="potongan-gaji") {echo "active"; }?>" href="potongan-gaji.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

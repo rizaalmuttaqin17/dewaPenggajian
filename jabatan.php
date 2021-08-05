@@ -36,6 +36,7 @@
                                         <td class='align-middle text-center'>
                                             <p class='text-xs font-weight-bold mb-0'>".$row['jabatan']."</p>
                                         </td>
+                                        <td class='align-middle text-center'>
                                             <span class='badge badge-sm bg-gradient-success'>".$row['gaji_pokok']."</span>
                                         </td>
                                         <td class='align-middle'>

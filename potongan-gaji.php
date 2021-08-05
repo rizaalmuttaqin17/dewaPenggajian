@@ -1,10 +1,10 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
-    $current_page = 'absensi';
+    $current_page = 'potongan-gaji';
     include 'layout/menu.php'
 ?>
 
-<?php startblock('absensi') ?>
+<?php startblock('potongan-gaji') ?>
 <div class="container-fluid py-4">
 <div class="row">
         <div class="col-12">
