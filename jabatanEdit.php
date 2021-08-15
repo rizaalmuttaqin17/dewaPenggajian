@@ -14,7 +14,7 @@
             </div>
             <div class="card-body px-0 pt-4 pb-2">
                 <div class="p-0">
-                    <form method="post" action="views/jabatanUpdate.php">
+                    <form method="post" action="jabatanUpdate.php">
                         <table class='table align-items-center mb-0 ms-3' style="border-bottom: transparent;">
                             <?php
                 	            $id = $_GET['id'];

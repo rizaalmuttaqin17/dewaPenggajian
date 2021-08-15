@@ -54,7 +54,7 @@ if (mysqli_num_rows($results)> 0) {
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark"
                                 href="javascript:;">Halaman</a>
                         </li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page"><?php if ($page!="null") {echo $page; }?></li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="current_page"><?php if ($current_page!="null") {echo $current_page; }?></li>
                     </ol>
                     <h6 class="font-weight-bolder mb-0"><?php if ($page!="null") {echo $page; }?></h6>
                 </nav>
