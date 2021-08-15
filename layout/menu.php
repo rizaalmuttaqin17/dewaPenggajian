@@ -7,7 +7,7 @@
         <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
             target="_blank">
             <img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Dewa Penggajian</span>
+            <span class="ms-1 font-weight-bold">PT. Yugo Putra Sejahtera</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">

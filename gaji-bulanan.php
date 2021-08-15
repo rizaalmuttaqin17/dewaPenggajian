@@ -47,7 +47,7 @@
                                                     <p class='text-xs font-weight-bold mb-0'>".$row['name']."</p>
                                                 </td>
                                                 <td class='align-middle text-center'>
-                                                    <p class='text-xs font-weight-bold mb-0'>".$row['total_gaji']."</p>
+                                                    <p class='text-xs font-weight-bold mb-0'>".rupiah($row['total_gaji'])."</p>
                                                 </td>
                                                 <td class='align-middle text-center'>
                                                     <p class='text-xs font-weight-bold mb-0'>".$row['tanggal_gajian']."</p>

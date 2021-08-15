@@ -1,6 +1,7 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php
     $current_page = 'home';
+    $page = 'Beranda';
     include 'layout/menu.php' 
 ?>
 

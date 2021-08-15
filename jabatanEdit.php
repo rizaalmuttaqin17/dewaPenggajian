@@ -14,7 +14,7 @@
             </div>
             <div class="card-body px-0 pt-4 pb-2">
                 <div class="p-0">
-                    <form method="post" action="jabatanUpdate.php">
+                    <form method="post" action="views/jabatanUpdate.php">
                         <table class='table align-items-center mb-0 ms-3' style="border-bottom: transparent;">
                             <?php
                 	            $id = $_GET['id'];
@@ -32,7 +32,7 @@
                                         <tr>
                                             <td class='align-middle'>Gaji Pokok</td>
                                             <td class='align-middle'>
-                                                <input class='input-group-text text-body' type='number' name='gaji_pokok' value='".$d['gaji_pokok']."'>
+                                                <input class='input-group-text text-body uang' type='text' name='gaji_pokok' value='".$d['gaji_pokok']."'>
                                             </td>
                                         </tr>
                                         <tr>
