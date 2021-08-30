@@ -68,7 +68,7 @@ if (mysqli_num_rows($results)> 0) {
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                            <a href="index.php?logout='1'" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">Logout</span>
                             </a>
@@ -176,12 +176,17 @@ if (mysqli_num_rows($results)> 0) {
         </nav>
         <div class="container-fluid py-4">
             <div class="row">
-                <?php startblock('home') ?><?php endblock(); ?>
-                <?php startblock('absensi') ?><?php endblock(); ?>
-                <?php startblock('gaji-bulanan') ?><?php endblock(); ?>
-                <?php startblock('jabatan') ?><?php endblock(); ?>
-                <?php startblock('potongan-gaji') ?><?php endblock(); ?>
-                <?php startblock('users') ?><?php endblock(); ?>
+                <?php if (isset($_SESSION['role'])=='User'){?>
+                    <?php startblock('home') ?><?php endblock(); ?>
+                    <?php startblock('absensi') ?><?php endblock()?>
+                <?php }else if (isset($_SESSION['role'])=='Admin'){ ?>
+                    <?php startblock('home') ?><?php endblock(); ?>
+                    <?php startblock('absensi') ?><?php endblock(); ?>
+                    <?php startblock('gaji-bulanan') ?><?php endblock(); ?>
+                    <?php startblock('jabatan') ?><?php endblock(); ?>
+                    <?php startblock('potongan-gaji') ?><?php endblock(); ?>
+                    <?php startblock('users') ?><?php endblock(); ?>
+                <?php } ?>
             </div>
             <footer class="footer pt-3  ">
                 <div class="container-fluid">
