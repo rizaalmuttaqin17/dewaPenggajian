@@ -2,7 +2,7 @@
 <?php 
     $current_page = 'gaji-bulanan';
     $page = 'Gaji Bulanan';
-    include 'layout/menu.php'
+    include 'layout/menu.php';
 ?>
 
 <?php startblock('gaji-bulanan') ?>

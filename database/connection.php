@@ -3,6 +3,7 @@ if(!isset($_SESSION))
 { 
 	session_start(); 
 } 
+date_default_timezone_set('Asia/Makassar');
 
 // initializing variables
 $name   = "";
@@ -10,7 +11,7 @@ $email  = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', 'root', 'dewa_gaji');
+$db = mysqli_connect('localhost', 'root', '', 'dewa_gaji');
 
 // REGISTER USER
 if (isset($_POST['register'])) {
@@ -68,11 +69,13 @@ if (isset($_POST['login'])) {
   
 	if (count($errors) == 0) {
 		$password = md5($password);
-		$query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+		$query = "SELECT users.id ,users.id_jabatan,users.name,jabatan.jabatan ,users.tgl_aktif,users.email,users.email,users.foto,users.role FROM users,jabatan WHERE email='$email' AND password='$password' AND jabatan.id=users.id_jabatan";
 		$results = mysqli_query($db, $query);
 		while($row=$results->fetch_assoc()){
 			$_SESSION['role'] = $row['role'];
 			$_SESSION['name'] = $row['name'];
+			$_SESSION['users'] = $row;
+			
 		}
 		if (mysqli_num_rows($results) == 1) {
 		  $_SESSION['email'] = $email;
@@ -84,4 +87,10 @@ if (isset($_POST['login'])) {
 	}
 
   }
+$query2 = "SELECT * FROM kantor_setting";
+$results2 = mysqli_query($db, $query2);
+$settingKantor = [];
+while($row = mysqli_fetch_array($results2)){    
+	$settingKantor = $row;
+}
 ?>

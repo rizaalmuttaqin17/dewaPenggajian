@@ -46,7 +46,7 @@
                                         <p class='text-xs font-weight-bold mb-0'>".rupiah($row['potongan'])."</p>
                                     </td>
                                     <td class='align-middle'>
-                                        <a href='potongan-gajiEdit.php?id=".$row['id']."' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a>
+                                        <a href='potongan-gajiEdit.php?id=".$row['id']."' class='btn btn-success data-toggle='tooltip' data-original-title='Edit user'>Edit</a>
                                     </td>
                                 </tr>
                             </tbody>";

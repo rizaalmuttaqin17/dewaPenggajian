@@ -35,8 +35,10 @@
                     </thead>
                     <?php
                     $i = 1;
-                    if($stmt = $db->query("SELECT * FROM jabatan")){
-                        while ($row = $stmt->fetch_assoc()) {
+                    $query = mysqli_query($db,"SELECT * FROM jabatan");
+                    
+                    if(mysqli_num_rows($query)>0){
+                        while ($row = mysqli_fetch_array($query)) {
                     ?>
                     <tbody>
                         <tr>
@@ -50,8 +52,8 @@
                                 <span class="badge badge-sm bg-gradient-success"><?php echo rupiah($row['gaji_pokok'])?></span>
                             </td>
                             <td class="align-middle">
-                                <a href="<?php echo 'jabatanEdit.php?id='.$row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Jabatan">Edit</a>
-                                <a href="jabatanHapus.php?id=<?php echo $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Hapus Jabatan">Hapus</a>
+                                <a href="<?php echo 'jabatanEdit.php?id='.$row['id'] ?>" class="btn btn-success" data-toggle="tooltip" data-original-title="Edit Jabatan">Edit</a>
+                                <a href="jabatanHapus.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="Hapus Jabatan">Hapus</a>
                             </td>
                         </tr>
                         </tbody>

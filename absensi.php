@@ -4,64 +4,102 @@
     $page = 'Absensi';
     include 'layout/menu.php'
 ?>
+<?php startblock('css') ?>
+<?php endblock();?>
 
 <?php startblock('absensi') ?>
-<div class="col-12">
-    <div class="card mb-4">
-        <div class="card-header pb-0">
-            <div class="row">
-                <h6 class="col-11">Tabel Absensi</h6>
-            </div>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table class='table align-items-center mb-0'>
-                    <thead>
-                        <tr>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>No. </th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Nama Pengguna</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Tanggal Absen</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Jam Masuk</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Jam Keluar</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Keterangan</th>
-                            <th class='text-secondary opacity-7'></th>
-                        </tr>
-                    </thead>
-                    <?php
-                        $i = 1;
-                        if($stmt = $db->query("SELECT absensi.id, tanggal_absen, jam_masuk, jam_keluar, keterangan, name FROM absensi, users WHERE absensi.id_user=users.id")){
-                            while ($row = $stmt->fetch_assoc()) {
-                                echo "
-                                <tbody>
-                                    <tr>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$i++."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['name']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['tanggal_absen']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['jam_masuk']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['jam_keluar']."</p>
-                                        </td>
-                                        <td class='align-middle text-center text-sm'>
-                                            <span class='badge badge-sm bg-gradient-success'>".$row['keterangan']."</span>
-                                        </td>
-                                    </tr>
-                                </tbody>";
-                            }
-                        }else{
-                            echo $connection->error;
-                        }
-                        ?>
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid">
+	<div class="page-header min-height-100 border-radius-xl mt-4"
+		style="background-image: url('../../../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+		<span class="mask bg-gradient-primary opacity-6"></span>
+	</div>
+	<div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+		<div class="row gx-4">
+			<div class="col-auto">
+				<div class="avatar avatar-xl position-relative">
+					<img src="assets/img/users/<?php echo $_SESSION['users']['foto']; ?>" alt="profile_image"
+						class="w-100 border-radius-lg shadow-sm">
+				</div>
+			</div>
+			<div class="col-auto my-auto">
+				<div class="h-100">
+					<h5 class="mb-1">
+						<?php echo $_SESSION['users']['name']; ?>
+					</h5>
+					<p class="mb-0 font-weight-bold text-sm">
+						Jabatan : <?php echo $_SESSION['users']['jabatan']; ?>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row my-4">
+		<div class="col-12">
+			<div class="card">
+				<div class="table-responsive">
+					<table class="table align-items-center mb-0">
+						<thead>
+							<tr>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl
+									Absen</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jam
+									Masuk</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jam
+									Pulang</th>
+								<th
+									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									Status Absen
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+								$query = "SELECT * FROM absensi WHERE MONTH(tanggal_absen) = MONTH(NOW()) AND id_user =  '".$_SESSION['users']['id']."'";
+								$result = mysqli_query($db,$query);
+								while ($row = mysqli_fetch_array($result)) {
+								?>
+
+									<tr>
+										<td>
+											<div class="d-flex px-2 py-1">
+												<div class="d-flex flex-column justify-content-center">
+													<h6 class="mb-0 text-sm"><?php echo date('d F Y',strtotime($row['tanggal_absen'])); ?></h6>
+												</div>
+											</div>
+										</td>
+										<td>
+										<div class="d-flex px-2 py-1">
+												<div class="d-flex flex-column justify-content-center">
+													<h6 class="mb-0 text-sm"><?php echo date('h:i:s',strtotime($row['jam_masuk'])); ?></h6>
+												</div>
+											</div>
+										</td>
+										<td>
+										<div class="d-flex px-2 py-1">
+												<div class="d-flex flex-column justify-content-center">
+													<h6 class="mb-0 text-sm"><?php echo ($row['jam_keluar']!=null)?date('h:i:s',strtotime($row['jam_keluar'])):"Belum Absen Pulang!" ?></h6>
+												</div>
+											</div>
+										</td>
+										<td class="align-middle text-center">
+											<span class="text-secondary text-sm"><?php echo ($row['terlambat']=='N')?'<span class="btn btn-danger btn-sm">Terlambat</span>':'<button type="button" class="btn btn-success">Masuk</button> ' ?></span>
+										</td>
+									</tr>
+								<?php
+								}
+							?>
+							
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+<?php endblock();?>
+
+<?php startblock('js') ?>
 <?php endblock();?>

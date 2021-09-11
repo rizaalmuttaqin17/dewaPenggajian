@@ -63,7 +63,7 @@
                                             <span class='badge badge-sm bg-gradient-success'>".$row['role']."</span>
                                         </td>
                                         <td class='align-middle'>
-                                            <a href='usersEdit.php?id=".$row['id']."' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>
+                                            <a href='usersEdit.php?id=".$row['id']."' class='btn btn-success' data-toggle='tooltip' data-original-title='Edit user'>
                                                 Edit
                                             </a>
                                         </td>

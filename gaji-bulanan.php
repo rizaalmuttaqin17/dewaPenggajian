@@ -52,8 +52,8 @@
                                                     <p class='text-xs font-weight-bold mb-0'>".$row['tanggal_gajian']."</p>
                                                 </td>
                                                 <td class='align-middle'>
-                                                    <a href='gaji-bulananEdit.php?id=".$row['id']."' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a>
-                                                    <a href='gaji-bulananHapus.php?id=".$row['id']."' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Hapus Gaji Bulanan'>Hapus</a>
+                                                    <a href='gaji-bulananEdit.php?id=".$row['id']."' class='btn btn-success ' data-toggle='tooltip' data-original-title='Edit user'>Edit</a>
+                                                    <a href='gaji-bulananHapus.php?id=".$row['id']."' class='btn btn-danger' data-toggle='tooltip' data-original-title='Hapus Gaji Bulanan'>Hapus</a>
                                                 </td>
                                             </tr>
                                         </tbody>";
