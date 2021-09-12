@@ -1,11 +1,11 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
-    $current_page = 'pengguna';
-    $page = 'Pengguna';
+    $current_page = 'setup-kantor';
+    $page = 'Setup Kantor';
     include 'layout/menu.php'
 ?>
 
-<?php startblock('users') ?>
+<?php startblock('setup-kantor') ?>
 <div class="col-12">
     <div class="card mb-4">
         <div class="card-header pb-0">
@@ -14,7 +14,6 @@
                     <h6>Tabel Pengguna</h6>
                 </div>
                 <div class="col-2" style="text-align: end;">
-                    <a class="btn bg-gradient-primary w-100 px-3 mb-2 active"href="usersTambah.php">+ Tambah</a>
                 </div>
             </div>
         </div>
@@ -42,10 +41,10 @@
                         </tr>
                     </thead>
                     <?php
-                                    $i = 1;
-                                    if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
-                                        while ($row = $stmt->fetch_assoc()) {
-                                echo "
+                    $i = 1;
+                    if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
+                        while ($row = $stmt->fetch_assoc()) {
+                            echo "
                                 <tbody>
                                     <tr>
                                         <td class='align-middle text-center'>
@@ -76,11 +75,11 @@
                                         </td>
                                     </tr>
                                 </tbody>";
-                            }
-                        }else{
-                            echo $connection->error;
                         }
-                        ?>
+                    }else{
+                        echo $connection->error;
+                    }
+                    ?>
                 </table>
             </div>
         </div>

@@ -37,6 +37,12 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="align-middle">Keterangan</td>
+                                    <td class="align-middle">
+                                        <input class="input-group-text text-body uang" type="text" name="keterangan" id="keterangan">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="align-middle text-canter"><button class="btn btn-primary btn-sm mb-0" type="submit">Simpan</button></td>
                                 </tr>
                             </tbody>
