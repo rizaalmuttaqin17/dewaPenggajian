@@ -10,9 +10,21 @@ $tanggal_lahir = $_POST['tanggal_lahir'];
 $kontak = $_POST['kontak'];
 $tunjangan = str_replace(".","",$_POST['tunjangan']);
 $role = $_POST['role'];
-$foto = $_POST['foto'];
 
-mysqli_query($db, "UPDATE users SET id_jabatan='$jabatan', name='$name', tgl_aktif='$tgl_aktif', email='$email', foto='$foto', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', kontak='$kontak', tunjangan='$tunjangan', role='$role' WHERE id='$id'");
+//Upload Foto
+$foto = $_FILES['foto']['name'];
+if(!empty($foto)){
+    $lokasiFoto = $_FILES['foto']['tmp_name'];
+    $tipeFile = pathinfo($foto, PATHINFO_EXTENSION);
+    $fileFoto = $id.".".$tipeFile;
+
+    $folder = "assets/usersPhoto/".$fileFoto;
+    move_uploaded_file($lokasiFoto, $folder);
+}else{
+    $fileFoto = "null";
+}
+
+mysqli_query($db, "UPDATE users SET id_jabatan='$jabatan', name='$name', tgl_aktif='$tgl_aktif', email='$email', foto='$fileFoto', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', kontak='$kontak', tunjangan='$tunjangan', role='$role', updated_at=now() WHERE id='$id'");
 header("location:users.php");
 
 ?>

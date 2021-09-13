@@ -14,7 +14,7 @@
             </div>
             <div class="card-body px-0 pt-4 pb-2">
                 <div class="p-0">
-                    <form method="post" action="usersSave.php">
+                    <form method="post" action="usersSave.php" enctype="multipart/form-data">
                         <table class="table align-items-center mb-0 ms-3" style="border-bottom: transparent;">
                             <tbody>
                                 <tr>
@@ -24,7 +24,7 @@
                                     </td>
                                     <td class="align-middle">Jabatan</td>
                                     <td class="align-middle">
-                                        <select class="input-group-text text-body" name="jabatan" style="width:60%">
+                                        <select class="input-group-text text-body" name="jabatan" style="width:40%">
                                             <?php
                                             $jabatan = mysqli_query($db,"SELECT * FROM jabatan");
 	                                        while($d = mysqli_fetch_array($jabatan)){
@@ -39,7 +39,7 @@
                                     <td class="align-middle">
                                         <input class="input-group-text text-body" type="date" name="tgl_aktif" id="tgl_aktif">
                                     </td>
-                                    <td class="align-middle">email</td>
+                                    <td class="align-middle">Email</td>
                                     <td class="align-middle">
                                         <input class="input-group-text text-body" type="text" name="email" id="email">
                                     </td>
@@ -51,7 +51,7 @@
                                     </td>
                                     <td class="align-middle">Tanggal Lahir</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="date" name="tangal_lahir" id="tanggal_lahir">
+                                        <input class="input-group-text text-body" type="date" name="tanggal_lahir" id="tanggal_lahir">
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,9 +72,15 @@
                                             <option value="User">User</option>
                                         </select>
                                     </td>
-                                    <td class="align-middle">foto</td>
+                                    <td class="align-middle">Foto</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="text" name="foto" id="fptp">
+                                        <input type="file" name="foto" id="foto">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">Password</td>
+                                    <td class="align-middle">
+                                        <input class="input-group-text text-body" type="password" name="password" id="password">
                                     </td>
                                 </tr>
                                 <tr>

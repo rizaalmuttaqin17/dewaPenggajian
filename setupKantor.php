@@ -6,83 +6,177 @@
 ?>
 
 <?php startblock('setup-kantor') ?>
-<div class="col-12">
-    <div class="card mb-4">
-        <div class="card-header pb-0">
-        <div class="row">
-                <div class="col-10">
-                    <h6>Tabel Pengguna</h6>
+<div class="container-fluid">
+    <div class="row">
+        <?php 
+            $results = mysqli_query($db, "SELECT * FROM kantor_setting");
+            while($d = mysqli_fetch_array($results)){
+        ?>
+        <div class="col-md-3">
+            <h3>Setup Kantor</h3>
+        </div>
+        <div class="col-md-9">
+            <a href="setupKantorEdit.php?id=<?php echo $d['id']?>" class='btn btn-success' data-toggle='tooltip' data-original-title='Edit Setup Kantor'>Edit</a>
+        </div>
+        <div class="col-md-12 py-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Jam Masuk Kantor</p>
+                                    <h5 class="font-weight-bolder text-info  mb-0">
+                                        <?php 
+                                            date_default_timezone_set('Asia/Jakarta');
+                                            echo date('H.i', strtotime($d['jam_masuk']));
+                                        ?>
+                                        WITA
+                                    </h5>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
+                                        <i class="fa fa-sign-in text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-2" style="text-align: end;">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Jam Pulang Kantor</p>
+                                    <h5 class="font-weight-bolder text-success  mb-0">
+                                        <?php 
+                                            date_default_timezone_set('Asia/Jakarta');
+                                            echo date('H.i', strtotime($d['jam_pulang']));
+                                        ?>
+                                        WITA
+                                    </h5>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                                        <i class="fa fa-sign-out text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Jam Mulai Absen</p>
+                                    <h5 class="font-weight-bolder text-danger  mb-0">
+                                        <?php 
+                                            date_default_timezone_set('Asia/Jakarta');
+                                            echo date('H.i', strtotime($d['dimulai_absen_menit']));
+                                        ?>
+                                        WITA
+                                    </h5>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                        <i class="fas fa-user-clock text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table class='table align-items-center mb-0'>
-                    <thead>
-                        <tr>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                No. </th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                Nama Pengguna</th>
-                            <th
-                                class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>
-                                Jabatan</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                TTL</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                Kontak</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                Tunjangan</th>
-                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>
-                                Role</th>
-                            <th class='text-secondary opacity-7'></th>
-                        </tr>
-                    </thead>
-                    <?php
-                    $i = 1;
-                    if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
-                        while ($row = $stmt->fetch_assoc()) {
-                            echo "
-                                <tbody>
-                                    <tr>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$i++."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['name']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['jabatan']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['tempat_lahir']."</p>
-                                        </td>
-                                        <td class='align-middle text-center'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['kontak']."</p>
-                                        </td>
-                                        <td class='align-middle text-center text-sm'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['tunjangan']."</p>
-                                        </td>
-                                        <td class='align-middle text-center text-sm'>
-                                            <span class='badge badge-sm bg-gradient-success'>".$row['role']."</span>
-                                        </td>
-                                        <td class='align-middle'>
-                                            <a href='usersEdit.php?id=".$row['id']."' class='btn btn-success' data-toggle='tooltip' data-original-title='Edit user'>
-                                                Edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>";
-                        }
-                    }else{
-                        echo $connection->error;
-                    }
-                    ?>
-                </table>
+        <div class="card col-md-12 p-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-capitalize font-weight-bolder">Potongan Gaji</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bolder">Potongan Jika Terlambat</p>
+                                    <div style="display: flex;">
+                                        <h5 class="font-weight-bolder text-danger mb-0">Rp. &nbsp;</h5>
+                                        <h5 class="font-weight-bolder text-danger mb-0 uang">
+                                            <?php 
+                                                echo $d['potongan_gaji_terlambat'];
+                                            ?>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                        <i class="fas fa-clock text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bolder">Potongan Jika Absen</p>
+                                    <div style="display: flex;">
+                                        <h5 class="font-weight-bolder text-danger mb-0">Rp. &nbsp;</h5>
+                                        <h5 class="font-weight-bolder text-danger mb-0 uang">
+                                            <?php 
+                                                echo $d['potongan_gaji_absen'];
+                                            ?>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                        <i class="fas fa-window-close text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bolder">Potongan PPH</p>
+                                    <div style="display: flex;">
+                                        <h5 class="font-weight-bolder text-danger mb-0 uang">
+                                            <?php 
+                                                echo $d['potongan_gaji_pph'];
+                                            ?>
+                                        </h5>
+                                        <h5 class="font-weight-bolder text-danger mb-0">%</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div
+                                        class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                        <i class="fas fa-percent text-lg opacity-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <?php }?>
     </div>
 </div>
 <?php endblock();?>

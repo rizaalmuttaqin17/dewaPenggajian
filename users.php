@@ -42,9 +42,9 @@
                         </tr>
                     </thead>
                     <?php
-                                    $i = 1;
-                                    if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
-                                        while ($row = $stmt->fetch_assoc()) {
+                        $i = 1;
+                        if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
+                            while ($row = $stmt->fetch_assoc()) {
                                 echo "
                                 <tbody>
                                     <tr>
@@ -64,14 +64,17 @@
                                             <p class='text-xs font-weight-bold mb-0'>".$row['kontak']."</p>
                                         </td>
                                         <td class='align-middle text-center text-sm'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['tunjangan']."</p>
+                                            <p class='badge badge-sm bg-gradient-success'>".rupiah($row['tunjangan'])."</p>
                                         </td>
                                         <td class='align-middle text-center text-sm'>
-                                            <span class='badge badge-sm bg-gradient-success'>".$row['role']."</span>
+                                            <p class='badge badge-sm bg-gradient-success'>".$row['role']."</p>
                                         </td>
                                         <td class='align-middle'>
                                             <a href='usersEdit.php?id=".$row['id']."' class='btn btn-success' data-toggle='tooltip' data-original-title='Edit user'>
                                                 Edit
+                                            </a>
+                                            <a href='usersHapus.php?id=".$row['id']."' class='btn btn-danger' data-toggle='tooltip' data-original-title='Hapus user'>
+                                                Hapus
                                             </a>
                                         </td>
                                     </tr>

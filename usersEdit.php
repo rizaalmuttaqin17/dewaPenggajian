@@ -14,7 +14,7 @@
             </div>
             <div class="card-body px-0 pt-4 pb-2">
                 <div class="p-0">
-                    <form method="post" action="usersUpdate.php">
+                    <form method="post" action="usersUpdate.php" enctype="multipart/form-data">
                         <table class="table align-items-center mb-0 ms-3" style="border-bottom: transparent;">
                             <?php
                 	            $id = $_GET['id'];
@@ -71,13 +71,13 @@
                                         </td>
                                         <td class="align-middle">Foto</td>
                                         <td class="align-middle">
-                                            <input class="input-group-text text-body" type="text" name="foto" value="<?php echo $d['foto'];?>">
+                                            <input class="input-group-text text-body" type="file" name="foto" value="<?php echo $d['foto'];?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="align-middle">Tunjangan</td>
                                         <td class="align-middle">
-                                            <input class="input-group-text text-body uang" type="number" name="tunjangan" value="<?php echo $d['tunjangan'];?>">
+                                            <input class="input-group-text text-body uang" type="text" name="tunjangan" value="<?php echo $d['tunjangan'];?>">
                                         </td>
                                         <td class="align-middle">Role</td>
                                         <td class="align-middle">
