@@ -96,6 +96,7 @@ if (mysqli_num_rows($results)> 0) {
                 <?php if ($_SESSION['role']=='User'){?>
                     <?php startblock('home') ?><?php endblock(); ?>
                     <?php startblock('absensi') ?><?php endblock()?>
+                    <?php startblock('profile') ?><?php endblock()?>
                 <?php }else if ($_SESSION['role']=='Admin'){ ?>
                     <?php startblock('home') ?><?php endblock(); ?>
                     <?php startblock('absensi') ?><?php endblock(); ?>
