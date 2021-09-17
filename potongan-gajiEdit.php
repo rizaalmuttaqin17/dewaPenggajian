@@ -18,7 +18,7 @@
                         <table class="table align-items-center mb-0 ms-3" style="border-bottom: transparent;">
                             <?php
                 	            $id = $_GET['id'];
-	                            $data = mysqli_query($db,"SELECT potongan_gaji.id p, potongan, jabatan, jabatan.id j from potongan_gaji,jabatan WHERE potongan_gaji.id_jabatan=jabatan.id AND potongan_gaji.id='$id'");
+	                            $data = mysqli_query($db,"SELECT potongan_gaji.id p, potongan, keterangan, jabatan, jabatan.id j from potongan_gaji,jabatan WHERE potongan_gaji.id_jabatan=jabatan.id AND potongan_gaji.id='$id'");
 	                            $dataJabatan = mysqli_query($db,"SELECT * FROM jabatan");
 	                            while($d = mysqli_fetch_array($data)){
                                 ?>
@@ -47,7 +47,14 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td class="align-middle">Keterangan</td>
+                                        <td class="align-middle">
+                                            <input class="input-group-text text-body" type="text" name="keterangan" value="<?php echo $d['keterangan'];?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td class='align-middle text-canter'><button class='btn btn-primary btn-sm mb-0' type='submit'>Simpan</button></td>
+                                        <td class='align-middle text-canter'><button class='btn btn-info btn-sm mb-0'>Kembali</button></td>
                                     </tr>
                                 </tbody>
                                 <?php } ?>

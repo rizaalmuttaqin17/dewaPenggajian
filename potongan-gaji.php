@@ -26,12 +26,13 @@
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>No. </th>
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Jabatan</th>
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Potongan</th>
+                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Keterangan</th>
                             <th class='text-secondary opacity-7'></th>
                         </tr>
                     </thead>
                     <?php
                     $i = 1;
-                    if($stmt = $db->query("SELECT potongan_gaji.id, potongan, jabatan FROM potongan_gaji, jabatan WHERE potongan_gaji.id_jabatan=jabatan.id")){
+                    if($stmt = $db->query("SELECT potongan_gaji.id, potongan, jabatan, keterangan FROM potongan_gaji, jabatan WHERE potongan_gaji.id_jabatan=jabatan.id")){
                         while ($row = $stmt->fetch_assoc()) {
                             echo "
                             <tbody>
@@ -44,6 +45,9 @@
                                     </td>
                                     <td class='align-middle text-center'>
                                         <p class='text-xs font-weight-bold mb-0'>".rupiah($row['potongan'])."</p>
+                                    </td>
+                                    <td class='align-middle text-center'>
+                                        <p class='text-xs font-weight-bold mb-0'>".$row['keterangan']."</p>
                                     </td>
                                     <td class='align-middle'>
                                         <a href='potongan-gajiEdit.php?id=".$row['id']."' class='btn btn-success data-toggle='tooltip' data-original-title='Edit user'>Edit</a>

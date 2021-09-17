@@ -16,7 +16,7 @@
                             <h6>Tabel Potongan Gaji</h6>
                         </div>
                         <div class="col-2" style="text-align: end;">
-                            <!-- <a class="btn bg-gradient-primary w-100 px-3 mb-2 active" href="gaji-bulananTambah.php">+ Tambah</a> -->
+                            <a class="btn bg-gradient-primary w-100 px-3 mb-2 active" href="gaji-bulananTambah.php">+ Tambah</a>
                         </div>
                     </div>
                 </div>

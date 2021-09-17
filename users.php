@@ -1,6 +1,6 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
-    $current_page = 'users';
+    $current_page = 'pengguna';
     $page = 'Pengguna';
     include 'layout/menu.php'
 ?>
@@ -9,7 +9,14 @@
 <div class="col-12">
     <div class="card mb-4">
         <div class="card-header pb-0">
-            <h6>Tabel Users</h6>
+        <div class="row">
+                <div class="col-10">
+                    <h6>Tabel Pengguna</h6>
+                </div>
+                <div class="col-2" style="text-align: end;">
+                    <a class="btn bg-gradient-primary w-100 px-3 mb-2 active"href="usersTambah.php">+ Tambah</a>
+                </div>
+            </div>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -35,9 +42,9 @@
                         </tr>
                     </thead>
                     <?php
-                                    $i = 1;
-                                    if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
-                                        while ($row = $stmt->fetch_assoc()) {
+                        $i = 1;
+                        if($stmt = $db->query("SELECT users.id, name, tempat_lahir, kontak, tunjangan, role, jabatan FROM users JOIN jabatan ON users.id_jabatan=jabatan.id")){
+                            while ($row = $stmt->fetch_assoc()) {
                                 echo "
                                 <tbody>
                                     <tr>
@@ -57,14 +64,17 @@
                                             <p class='text-xs font-weight-bold mb-0'>".$row['kontak']."</p>
                                         </td>
                                         <td class='align-middle text-center text-sm'>
-                                            <p class='text-xs font-weight-bold mb-0'>".$row['tunjangan']."</p>
+                                            <p class='badge badge-sm bg-gradient-success'>".rupiah($row['tunjangan'])."</p>
                                         </td>
                                         <td class='align-middle text-center text-sm'>
-                                            <span class='badge badge-sm bg-gradient-success'>".$row['role']."</span>
+                                            <p class='badge badge-sm bg-gradient-success'>".$row['role']."</p>
                                         </td>
                                         <td class='align-middle'>
                                             <a href='usersEdit.php?id=".$row['id']."' class='btn btn-success' data-toggle='tooltip' data-original-title='Edit user'>
                                                 Edit
+                                            </a>
+                                            <a href='usersHapus.php?id=".$row['id']."' class='btn btn-danger' data-toggle='tooltip' data-original-title='Hapus user'>
+                                                Hapus
                                             </a>
                                         </td>
                                     </tr>

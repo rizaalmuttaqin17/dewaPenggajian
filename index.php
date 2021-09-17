@@ -6,7 +6,7 @@
 ?>
 
 <?php startblock('home') ?>
-<div class="container-fluid py-4">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <h3>Tanggal Hari Ini : <?php echo date('d F Y '); ?> </h3>
@@ -50,7 +50,7 @@
                                 <div class="col-3 text-end">
                                     <div
                                         class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                        <i class="fas fa-award   text-lg opacity-10"></i>
+                                        <i class="fas fa-award text-lg opacity-10"></i>
                                     </div>
                                 </div>
                             </div>

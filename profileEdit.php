@@ -1,20 +1,20 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
-    $current_page = 'pengguna';
-    $page = 'Pengguna';
+    $current_page = 'profile';
+    $page = 'Profile';
     include 'layout/menu.php'
 ?>
 
-<?php startblock('users') ?>
+<?php startblock('profile') ?>
 <div class="row">
     <div class="col-12">
         <div class="card mb-4">
             <div class="card-header pb-0">
-                <h6 class="col-11">Edit Data Pengguna</h6>
+                <h6 class="col-11">Edit Profile</h6>
             </div>
             <div class="card-body px-0 pt-4 pb-2">
                 <div class="p-0">
-                    <form method="post" action="usersUpdate.php" enctype="multipart/form-data">
+                    <form method="post" action="profileUpdate.php" enctype="multipart/form-data">
                         <table class="table align-items-center mb-0 ms-3" style="border-bottom: transparent;">
                             <?php
                 	            $id = $_GET['id'];
