@@ -22,36 +22,17 @@
 	                            $dataJabatan = mysqli_query($db,"SELECT * FROM jabatan");
 	                            while($d = mysqli_fetch_array($data)){
                                 ?>
+                                <input class="input-group-text text-body" type="hidden" name="id" value="<?php echo $id;?>">
                                 <tbody>
                                     <tr>
-                                        <td class="align-middle">Name</td>
+                                        <td class="align-middle">Nama</td>
                                         <td class="align-middle">
                                             <input class="input-group-text text-body" type="text" name="name" value="<?php echo $d['name'];?>">
                                         </td>
-                                        <td class="align-middle">Jabatan</td>
-                                        <td class="align-middle">
-                                            <input class="input-group-text text-body" type="hidden" name="id" value="<?php echo $id;?>">
-                                            <select class="input-group-text text-body" name="jabatan">
-                                                <?php
-	                                                while($j = mysqli_fetch_array($dataJabatan)){
-                                                        if($d['jabatan']==$j['jabatan']){
-                                                            echo"<option value='".$j['id']."' selected>".$j['jabatan']."</option>";
-                                                        } else {
-                                                            echo"<option value='".$j['id']."'>".$j['jabatan']."</option>";
-                                                        }
-                                                    }
-                                                ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle">Tanggal Aktif</td>
-                                        <td class="align-middle">
-                                            <input class="input-group-text text-body" type="date" name="tgl_aktif" value="<?php echo $d['tgl_aktif'];?>">
-                                        </td>
+                                        
                                         <td class="align-middle">Email</td>
                                         <td class="align-middle">
-                                            <input class="input-group-text text-body" type="text" name="email" value="<?php echo $d['email'];?>">
+                                            <p><?php echo $d['email'];?></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -59,6 +40,12 @@
                                         <td class="align-middle">
                                             <input class="input-group-text text-body" type="text" name="tempat_lahir" id="tempat_lahir" value="<?php echo $d['tempat_lahir'];?>">
                                         </td>
+                                        <td class="align-middle">Tunjangan</td>
+                                        <td class="align-middle">
+                                            <input class="input-group-text text-body uang" type="text" name="tunjangan" value="<?php echo $d['tunjangan'];?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td class="align-middle">Tanggal Lahir</td>
                                         <td class="align-middle">
                                             <input class="input-group-text text-body" type="date" name="tanggal_lahir" value="<?php echo $d['tanggal_lahir'];?>">
@@ -69,22 +56,11 @@
                                         <td class="align-middle">
                                             <input class="input-group-text text-body" type="text" name="kontak" value="<?php echo $d['kontak'];?>">
                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td class="align-middle">Foto</td>
                                         <td class="align-middle">
                                             <input class="input-group-text text-body" type="file" name="foto" value="<?php echo $d['foto'];?>">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle">Tunjangan</td>
-                                        <td class="align-middle">
-                                            <input class="input-group-text text-body uang" type="text" name="tunjangan" value="<?php echo $d['tunjangan'];?>">
-                                        </td>
-                                        <td class="align-middle">Role</td>
-                                        <td class="align-middle">
-                                            <select class="input-group-text text-body pr-5" id="role" name="role">
-                                                <option value="Admin" <?php echo ($d['role'] == "Admin")?"selected":"" ?>>Admin</option>
-                                                <option value="User" <?php echo ($d['role'] == "User")?"selected":"" ?>>User</option>
-                                            </select>
                                         </td>
                                     </tr>
                                     <tr>

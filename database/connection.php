@@ -11,7 +11,7 @@ $email  = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', 'root', 'dewa_gaji');
+$db = mysqli_connect('localhost', 'root', '', 'dewa_gaji');
 
 // REGISTER USER
 if (isset($_POST['register'])) {
@@ -69,7 +69,7 @@ if (isset($_POST['login'])) {
   
 	if (count($errors) == 0) {
 		$password = md5($password);
-		$query = "SELECT users.id ,users.id_jabatan,users.name,jabatan.jabatan ,users.tgl_aktif,users.email,users.email,users.foto,users.role FROM users,jabatan WHERE email='$email' AND password='$password' AND jabatan.id=users.id_jabatan";
+		$query = "SELECT users.id ,users.id_jabatan,users.name,jabatan.jabatan ,users.tgl_aktif,users.email,users.email,users.foto,users.role,users.tunjangan FROM users,jabatan WHERE email='$email' AND password='$password' AND jabatan.id=users.id_jabatan";
 		$results = mysqli_query($db, $query);
 		while($row=$results->fetch_assoc()){
 			$_SESSION['role'] = $row['role'];

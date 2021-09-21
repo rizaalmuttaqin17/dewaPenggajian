@@ -20,67 +20,45 @@
                                 <tr>
                                 <td class="align-middle">Nama</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="text" name="name" id="name">
-                                    </td>
-                                    <td class="align-middle">Jabatan</td>
-                                    <td class="align-middle">
-                                        <select class="input-group-text text-body" name="jabatan" style="width:40%">
-                                            <?php
-                                            $jabatan = mysqli_query($db,"SELECT * FROM jabatan");
-	                                        while($d = mysqli_fetch_array($jabatan)){
-                                                echo"<option value='".$d['id']."'>".$d['jabatan']."</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">Tanggal Aktif</td>
-                                    <td class="align-middle">
-                                        <input class="input-group-text text-body" type="date" name="tgl_aktif" id="tgl_aktif">
+                                        <input class="input-group-text text-body" type="text" name="name" id="name" required>
                                     </td>
                                     <td class="align-middle">Email</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="text" name="email" id="email">
+                                        <input class="input-group-text text-body" type="text" name="email" id="email" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                 <td class="align-middle">Tanggal Lahir</td>
+                                    <td class="align-middle">
+                                        <input class="input-group-text text-body" type="date" name="tanggal_lahir" id="tanggal_lahir" required>
+                                    </td>
+                                    <td class="align-middle">Password</td>
+                                    <td class="align-middle">
+                                        <input class="input-group-text text-body" type="password" name="password" id="password" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="align-middle">Tempat Lahir</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="text" name="tempat_lahir" id="tempat_lahir">
+                                        <input class="input-group-text text-body" type="text" name="tempat_lahir" id="tempat_lahir" required>
                                     </td>
-                                    <td class="align-middle">Tanggal Lahir</td>
+                                    <td class="align-middle">Tunjangan</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="date" name="tanggal_lahir" id="tanggal_lahir">
+                                        <input class="input-group-text text-body uang" type="text" name="tunjangan" id="tunjangan" required>
                                     </td>
+                                   
                                 </tr>
                                 <tr>
                                     <td class="align-middle">No. Handphone</td>
                                     <td class="align-middle">
-                                        <input class="input-group-text text-body" type="text" name="kontak" id="kontak">
+                                        <input class="input-group-text text-body" type="text" name="kontak" id="kontak" required>
                                     </td>
-                                    <td class="align-middle">Tunjangan</td>
-                                    <td class="align-middle">
-                                        <input class="input-group-text text-body uang" type="text" name="tunjangan" id="tunjangan">
-                                    </td>
+                                    
                                 </tr>
                                 <tr>
-                                    <td class="align-middle">Role</td>
-                                    <td class="align-middle">
-                                        <select class="input-group-text text-body" type="text" name="role" id="role" style="width:60%">
-                                            <option value="Admin">Admin</option>
-                                            <option value="User">User</option>
-                                        </select>
-                                    </td>
                                     <td class="align-middle">Foto</td>
                                     <td class="align-middle">
-                                        <input type="file" name="foto" id="foto">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">Password</td>
-                                    <td class="align-middle">
-                                        <input class="input-group-text text-body" type="password" name="password" id="password">
+                                        <input type="file" name="foto" id="foto" required>
                                     </td>
                                 </tr>
                                 <tr>

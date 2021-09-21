@@ -11,10 +11,7 @@
         <div class="card-header pb-0">
             <div class="row">
                 <div class="col-10">
-                    <h6>Tabel Potongan Gaji</h6>
-                </div>
-                <div class="col-2" style="text-align: end;">
-                    <a class="btn bg-gradient-primary w-100 px-3 mb-2 active"href="potongan-gajiTambah.php">+ Tambah</a>
+                    <h6>Potongan Gaji</h6>
                 </div>
             </div>
         </div>
@@ -27,12 +24,12 @@
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Jabatan</th>
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Potongan</th>
                             <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Keterangan</th>
-                            <th class='text-secondary opacity-7'></th>
+                            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Tanggal</th>
                         </tr>
                     </thead>
                     <?php
                     $i = 1;
-                    if($stmt = $db->query("SELECT potongan_gaji.id, potongan, jabatan, keterangan FROM potongan_gaji, jabatan WHERE potongan_gaji.id_jabatan=jabatan.id")){
+                    if($stmt = $db->query("SELECT users.name, potongan_gaji.potongan, potongan_gaji.keterangan, potongan_gaji.tanggal_potongan FROM potongan_gaji, users, jabatan WHERE potongan_gaji.id_user=users.id AND users.id_jabatan=jabatan.id ORDER BY tanggal_potongan DESC")){
                         while ($row = $stmt->fetch_assoc()) {
                             echo "
                             <tbody>
@@ -41,7 +38,7 @@
                                         <p class='text-xs font-weight-bold mb-0'>".$i++."</p>
                                     </td>
                                     <td class='align-middle text-center'>
-                                        <p class='text-xs font-weight-bold mb-0'>".$row['jabatan']."</p>
+                                        <p class='text-xs font-weight-bold mb-0'>".$row['name']."</p>
                                     </td>
                                     <td class='align-middle text-center'>
                                         <p class='text-xs font-weight-bold mb-0'>".rupiah($row['potongan'])."</p>
@@ -49,14 +46,14 @@
                                     <td class='align-middle text-center'>
                                         <p class='text-xs font-weight-bold mb-0'>".$row['keterangan']."</p>
                                     </td>
-                                    <td class='align-middle'>
-                                        <a href='potongan-gajiEdit.php?id=".$row['id']."' class='btn btn-success data-toggle='tooltip' data-original-title='Edit user'>Edit</a>
+                                    <td class='align-middle text-center'>
+                                        <p class='text-xs font-weight-bold mb-0'>".date("d F Y",strtotime($row['tanggal_potongan']))."</p>
                                     </td>
                                 </tr>
                             </tbody>";
                         }
                     }else{
-                        echo $connection->error;
+                        // echo $connection->error;
                     }
                     ?>
                 </table>

@@ -105,6 +105,7 @@
             </div>
             <div class="row">
             <div class="col-md-12">
+            
                             <div class="card">
                             <?php
                                 $statAbsenHariIni = "";
@@ -114,7 +115,7 @@
                                     while($row = mysqli_fetch_array($results)){
                                         $statAbsenHariIni = $row;
                                         if ($row['jam_keluar'] == null) {
-                                            if($settingKantor['jam_pulang'] <= date("h:i:sa")){
+                                            if($settingKantor['jam_pulang'] <= date("H:i:s")){
                                                 ?>
                                                 <div class="card-header mx-4 p-3 text-center">
                                                     <button onclick="absenPulang()" class="btn  p-3 bg-gradient-primary shadow text-center border-radius-lg">
@@ -165,8 +166,8 @@
                                         
                                     }
                                 }else{
-                                    if ($settingKantor['dimulai_absen_menit'] <= date("h:i:s") ) {
-                                        if($settingKantor['jam_masuk'] >= date("h:i:s")){
+                                    if ($settingKantor['dimulai_absen_menit'] <= date("H:i:s") ) {
+                                        if($settingKantor['jam_masuk'] >= date("H:i:s")){
                                             ?>
                                             <div class="card-header mx-4 p-3 text-center">
                                                 <button onclick="absenHadir()" class="btn  p-3 bg-gradient-primary shadow text-center border-radius-lg">

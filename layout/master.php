@@ -93,9 +93,11 @@ if (mysqli_num_rows($results)> 0) {
                     <?php startblock('home') ?><?php endblock(); ?>
                     <?php startblock('absensi') ?><?php endblock()?>
                     <?php startblock('profile') ?><?php endblock()?>
+                    <?php startblock('gajiku') ?><?php endblock()?>
                 <?php }else if ($_SESSION['role']=='Admin'){ ?>
                     <?php startblock('home') ?><?php endblock(); ?>
                     <?php startblock('absensi') ?><?php endblock(); ?>
+                    <?php startblock('gajiku') ?><?php endblock()?>
                     <?php startblock('gaji-bulanan') ?><?php endblock(); ?>
                     <?php startblock('jabatan') ?><?php endblock(); ?>
                     <?php startblock('potongan-gaji') ?><?php endblock(); ?>
