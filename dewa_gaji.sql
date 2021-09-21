@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Sep 2021 pada 05.04
+-- Waktu pembuatan: 21 Sep 2021 pada 16.41
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.14
 
@@ -45,9 +45,8 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id`, `id_user`, `tanggal_absen`, `jam_masuk`, `jam_keluar`, `keterangan`, `terlambat`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(14, 2, '2021-09-12', '12:25:54', NULL, 'Masuk', 'Y', '2021-09-12 04:25:54', '2021-09-12 04:25:54', NULL),
-(15, 2, '2021-09-18', '10:25:58', NULL, 'Pulang', 'Y', '2021-09-18 02:25:58', '2021-09-18 02:25:58', NULL),
-(17, 2, '2021-09-19', '02:14:21', NULL, 'Masuk', 'Y', '2021-09-18 18:14:21', '2021-09-18 18:14:21', NULL);
+(22, 9, '2021-09-21', '22:05:03', '22:05:04', 'Pulang', 'Y', '2021-09-21 14:05:03', '2021-09-21 14:05:03', NULL),
+(23, 1, '2021-09-21', '22:33:06', '22:33:09', 'Pulang', 'Y', '2021-09-21 14:33:06', '2021-09-21 14:33:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -60,7 +59,7 @@ CREATE TABLE `gaji_bulanan` (
   `id_user` int(10) UNSIGNED NOT NULL,
   `total_gaji` int(11) DEFAULT NULL,
   `gaji_pokok` int(11) DEFAULT NULL,
-  `tunjuangan` int(11) DEFAULT NULL,
+  `tunjangan` int(11) DEFAULT NULL,
   `potongan` int(11) DEFAULT NULL,
   `pph` int(11) DEFAULT NULL,
   `tanggal_gajian` date DEFAULT NULL,
@@ -73,8 +72,8 @@ CREATE TABLE `gaji_bulanan` (
 -- Dumping data untuk tabel `gaji_bulanan`
 --
 
-INSERT INTO `gaji_bulanan` (`id`, `id_user`, `total_gaji`, `gaji_pokok`, `tunjuangan`, `potongan`, `pph`, `tanggal_gajian`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 3100000, 3000000, 100000, NULL, NULL, '2021-08-18', '2021-09-18 03:01:46', '2021-09-18 03:01:47', NULL);
+INSERT INTO `gaji_bulanan` (`id`, `id_user`, `total_gaji`, `gaji_pokok`, `tunjangan`, `potongan`, `pph`, `tanggal_gajian`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(6, 1, 4867200, 5000000, 100000, 30000, 202800, '2021-09-21', '2021-09-21 14:03:42', '2021-09-21 14:03:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +138,7 @@ CREATE TABLE `kantor_setting` (
 --
 
 INSERT INTO `kantor_setting` (`id`, `jam_masuk`, `jam_pulang`, `dimulai_absen_menit`, `potongan_gaji_terlambat`, `potongan_gaji_absen`, `potongan_gaji_pph`) VALUES
-(1, '02:00:00', '17:00:00', '02:00:00', 15000, 25000, 5);
+(1, '08:00:00', '17:00:00', '07:00:00', 15000, 25000, 4);
 
 -- --------------------------------------------------------
 
@@ -164,7 +163,13 @@ CREATE TABLE `potongan_gaji` (
 
 INSERT INTO `potongan_gaji` (`id`, `id_user`, `potongan`, `tanggal_potongan`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2, 10000, '2021-09-19', 'Telat', '2021-08-04 14:13:31', '2021-08-04 14:13:31', NULL),
-(2, 2, 15000, '2021-09-19', 'Terlambat', NULL, NULL, NULL);
+(2, 2, 15000, '2021-09-19', 'Terlambat', NULL, NULL, NULL),
+(3, 1, 15000, '2021-09-20', 'Terlambat', NULL, NULL, NULL),
+(4, 5, 15000, '2021-09-20', 'Terlambat', NULL, NULL, NULL),
+(5, 5, 15000, '2021-09-21', 'Terlambat', NULL, NULL, NULL),
+(6, 1, 15000, '2021-09-21', 'Terlambat', NULL, NULL, NULL),
+(7, 9, 15000, '2021-09-21', 'Terlambat', NULL, NULL, NULL),
+(8, 1, 15000, '2021-09-21', 'Terlambat', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +201,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `id_jabatan`, `name`, `tgl_aktif`, `email`, `foto`, `password`, `tempat_lahir`, `tanggal_lahir`, `kontak`, `tunjangan`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 'Eko Pujianto', '2021-09-18', 'ekopujianto48@gmail.com', ' 1.jpg', '25d55ad283aa400af464c76d713c07ad', 'Samarinda', '0000-00-00', '082157819525', 100000, 'Admin', '2021-09-17 17:36:52', '2021-09-17 17:56:22', NULL),
-(2, 2, 'Karyawan Ganteng', '2021-09-30', 'karyawan@gmail.com', '2.jpg', '25d55ad283aa400af464c76d713c07ad', 'Samarinda', '2021-09-15', '123', 100000, 'User', '2021-09-17 17:36:49', '2021-09-18 17:26:44', NULL);
+(2, 2, 'Karyawan Ganteng', '2021-09-30', 'karyawan@gmail.com', '2.jpg', '25d55ad283aa400af464c76d713c07ad', 'Samarinda', '2021-09-15', '123', 100000, 'User', '2021-09-17 17:36:49', '2021-09-18 17:26:44', NULL),
+(5, 2, 'Eko Pujianto2', '2021-09-09', 'ekopujianto@gmail.com', 'Eko Pujianto1632109694.jpg', '25d55ad283aa400af464c76d713c07ad', 'Samarinda', '2021-09-14', '082157819525', 10000, 'User', '2021-09-20 03:48:14', '2021-09-21 03:33:40', NULL),
+(8, 2, 'Eko Pujiantoo', '2021-09-21', 'admin', '', '21232f297a57a5a743894a0e4a801fc3', 'Samarinda', '2021-09-21', '082157819525', 100000, 'User', '2021-09-21 03:29:37', '2021-09-21 03:33:34', NULL),
+(9, 2, 'Dewa', '2021-09-21', 'dewa@gmail.com', 'Dewa1632233061.jpeg', '25d55ad283aa400af464c76d713c07ad', 'Samarinda', '2021-03-12', '082157819525', 100000, 'User', '2021-09-21 14:04:21', '2021-09-21 14:04:28', NULL);
 
 --
 -- Indexes for dumped tables
@@ -256,13 +264,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `gaji_bulanan`
 --
 ALTER TABLE `gaji_bulanan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `hari_libur`
@@ -286,13 +294,13 @@ ALTER TABLE `kantor_setting`
 -- AUTO_INCREMENT untuk tabel `potongan_gaji`
 --
 ALTER TABLE `potongan_gaji`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
