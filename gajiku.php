@@ -96,8 +96,8 @@
 										</div>
 									</div>
 									<div class="ms-auto text-end">
-										<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;">
-											<i class="fas fa-file-pdf   fa-2x "></i> PDF
+										<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="cetak/gaji.php?id=<?php echo $_SESSION['users']['id'] ?>&print=now" target="_blank">
+										<i class="fas fa-print  fa-2x  "></i> Cetak
 										</a>
 									</div>
 								</li>
@@ -140,8 +140,8 @@
 										</div>
 									</div>
 									<div class="ms-auto text-end">
-										<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;">
-											<i class="fas fa-file-pdf   fa-2x "></i> PDF
+										<a class="btn btn-link text-danger text-gradient px-3 mb-0"  href="cetak/gaji.php?id=<?php echo $_SESSION['users']['id'] ?>&print=<?php echo $row['id']; ?>" target="_blank">
+										<i class="fas fa-print  fa-2x  "></i> Cetak
 										</a>
 									</div>
 								</li>

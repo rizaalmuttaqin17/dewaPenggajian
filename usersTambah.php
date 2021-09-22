@@ -1,7 +1,7 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
     $current_page = 'pengguna';
-    $page = 'Pengguna';
+    $page = 'Karyawan';
     include 'layout/menu.php'
 ?>
 

@@ -1,8 +1,11 @@
 <?php require_once 'assets/phpti/ti.php' ?>
 <?php 
-    $current_page = 'absensi';
-    $page = 'Absensi';
-    include 'layout/menu.php'
+    $current_page = 'pengguna';
+    $page = 'Karyawan';
+    include 'layout/menu.php';
+    $idKaryawan = $_GET['id'];
+    $query = "SELECT * FROM users,jabatan WHERE users.id=$idKaryawan AND users.id_jabatan=jabatan.id";
+    $resultKaryawan = mysqli_fetch_array(mysqli_query($db,$query));
 ?>
 <?php startblock('css') ?>
 <?php endblock();?>
@@ -17,16 +20,16 @@
 		<div class="row gx-4">
 			<div class="col-auto">
 				<div class="avatar avatar-xl position-relative">
-					<img src="assets/img/users/<?php echo $_SESSION['users']['foto']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+					<img src="assets/img/users/<?php echo $resultKaryawan['foto']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
 				</div>
 			</div>
 			<div class="col-auto my-auto">
 				<div class="h-100">
 					<h5 class="mb-1">
-						<?php echo $_SESSION['users']['name']; ?>
+						<?php echo $resultKaryawan['name']; ?>
 					</h5>
 					<p class="mb-0 font-weight-bold text-sm">
-						Jabatan : <?php echo $_SESSION['users']['jabatan']; ?>
+						Jabatan : <?php echo $resultKaryawan['jabatan']; ?>
 					</p>
 				</div>
 			</div>
@@ -53,7 +56,7 @@
 						</thead>
 						<tbody>
 							<?php 
-								$query = "SELECT * FROM absensi WHERE MONTH(tanggal_absen) = MONTH(NOW()) AND id_user =  '".$_SESSION['users']['id']."' ORDER BY tanggal_absen DESC";
+								$query = "SELECT * FROM absensi WHERE MONTH(tanggal_absen) = MONTH(NOW()) AND id_user =  '".$idKaryawan."' ORDER BY tanggal_absen DESC";
 								$result = mysqli_query($db,$query);
 								while ($row = mysqli_fetch_array($result)) {
 								?>

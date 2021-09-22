@@ -6,7 +6,7 @@ $query = "SELECT * FROM absensi WHERE tanggal_absen=DATE_SUB(CURDATE(),INTERVAL 
 $results = mysqli_query($db, $query);
 if (mysqli_num_rows($results)>0) {
     $potongan_terlambat = $settingKantor['potongan_gaji_absen'];
-    $query = "INSERT INTO potongan_gaji(id_user,potongan,tanggal_potongan,keterangan) VALUES($idUser,$potongan_terlambat,NOW(),'Terlambat')";
+    $query = "INSERT INTO potongan_gaji(id_user,potongan,tanggal_potongan,keterangan) VALUES($idUser,$potongan_terlambat,NOW(),'Tidak Hadir')";
     mysqli_query($db,$query);
 }
 

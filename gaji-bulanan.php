@@ -70,12 +70,16 @@
 									</div>
 								</div>
 								<div class="ms-auto text-end">
-									<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;">
-										<i class="fas fa-file-pdf   fa-2x "></i> PDF
+									<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="cetak/gaji.php?id=<?php echo $row['id']; ?>&print=now" target="_blank">
+										<i class="fas fa-print  fa-2x  "></i> Cetak
 									</a>
-									<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="gaji-bulananBayar.php?id=<?php echo $row['id']; ?>">
-										<i class="fas fa-money-bill  fa-2x  "></i> BAYAR
-									</a>
+									<?php if ($_SESSION['role']=='User'){?>
+										<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="gaji-bulananBayar.php?id=<?php echo $row['id']; ?>">
+											<i class="fas fa-money-bill  fa-2x  "></i> BAYAR
+										</a>
+									<?php } ?>
+										
+									
 								</div>
 							</li>
 							<?php

@@ -98,11 +98,22 @@ if (mysqli_num_rows($results)> 0) {
                     <?php startblock('home') ?><?php endblock(); ?>
                     <?php startblock('absensi') ?><?php endblock(); ?>
                     <?php startblock('gajiku') ?><?php endblock()?>
+                    <?php startblock('profile') ?><?php endblock()?>
                     <?php startblock('gaji-bulanan') ?><?php endblock(); ?>
                     <?php startblock('jabatan') ?><?php endblock(); ?>
                     <?php startblock('potongan-gaji') ?><?php endblock(); ?>
                     <?php startblock('users') ?><?php endblock(); ?>
                     <?php startblock('setup-kantor') ?><?php endblock(); ?>
+                <?php }else if ($_SESSION['role']=='Pimpinan'){ ?>
+                    <?php startblock('home') ?><?php endblock(); ?>
+                    <?php startblock('absensi') ?><?php endblock(); ?>
+                    <?php startblock('gajiku') ?><?php endblock()?>
+                    <?php startblock('profile') ?><?php endblock()?>
+                    <?php startblock('gaji-bulanan') ?><?php endblock(); ?>
+                    <?php startblock('users') ?><?php endblock(); ?>
+                    <?php startblock('potongan-gaji') ?><?php endblock(); ?>
+
+                
                 <?php } ?>
             </div>
             <footer class="footer pt-3  ">

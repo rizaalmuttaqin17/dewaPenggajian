@@ -80,6 +80,7 @@ if (isset($_POST['login'])) {
 		if (mysqli_num_rows($results) == 1) {
 		  $_SESSION['email'] = $email;
 		  $_SESSION['success'] = "You are now logged in";
+	
 		  header('location: ../../index.php');
 		}else {
 			$errors['akun'] = "Email atau password salah!.";
